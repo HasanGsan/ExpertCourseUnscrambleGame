@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ExpertCourseAndroidProject</string>
+    <string name="miss_str">Пропустить</string>
+    <string name="check_str">Проверить слово</string>
+    <string name="next_str">Дальше</string>
+    <string name="incorrect_message">Incorrect!</string>
+    <string name="empty">""</string>
+</resources>

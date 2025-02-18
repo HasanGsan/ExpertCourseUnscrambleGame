@@ -1,0 +1,87 @@
+package com.example.expertcourseandroidproject.game
+
+import android.view.KeyEvent
+import android.view.View
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.ViewInteraction
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
+import androidx.test.espresso.action.ViewActions.pressKey
+import androidx.test.espresso.action.ViewActions.replaceText
+import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.isEnabled
+import androidx.test.espresso.matcher.ViewMatchers.isNotEnabled
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withParent
+import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.example.expertcourseandroidproject.R
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.Matcher
+
+class InputUi(
+    containerIdMatcher: Matcher<View>,
+    containerClassTypeMatcher: Matcher<View>
+) {
+
+    private val inputLayoutId: Int = R.id.inputLayout
+    private val inputEditText: Int = R.id.inputText
+    private val layoutInteraction: ViewInteraction = onView(
+        allOf(
+            withId(inputLayoutId),
+            isAssignableFrom(TextInputLayout::class.java),
+            containerClassTypeMatcher,
+            containerIdMatcher,
+        )
+    )
+
+    private val inputInteraction : ViewInteraction = onView(
+        allOf(
+            withId(inputEditText),
+            isAssignableFrom(TextInputEditText::class.java)
+        )
+    )
+
+    fun assertInitialState() {
+        layoutInteraction.check(matches(isEnabled()))
+            .check(matches(TextInputLayoutErrorEnabledMatcher(false)))
+        inputInteraction.check(matches(withText("")))
+    }
+
+    fun addInput(text: String) {
+//        typeText он не работает с русской клавой
+        inputInteraction.perform(replaceText(text), closeSoftKeyboard())
+    }
+
+    fun assertInsufficientState() {
+        layoutInteraction.check(matches(isEnabled()))
+            .check(matches(TextInputLayoutErrorEnabledMatcher(false)))
+    }
+
+    fun assertSufficientState() {
+        layoutInteraction.check(matches(isEnabled()))
+            .check(matches(TextInputLayoutErrorEnabledMatcher(false)))
+    }
+
+    fun assertCorrectState() {
+        layoutInteraction.check(matches(isNotEnabled()))
+            .check(matches(TextInputLayoutErrorEnabledMatcher(false)))
+    }
+
+    fun assertIncorrectState() {
+        layoutInteraction.check(matches(isEnabled()))
+            .check(matches(TextInputLayoutErrorEnabledMatcher(true)))
+            .check(matches(TextInputLayoutHasErrorText(R.string.incorrect_message)))
+    }
+
+
+    fun removeInputLastLetter() {
+        inputInteraction.perform(click(), pressKey(KeyEvent.KEYCODE_DEL), closeSoftKeyboard())
+    }
+
+
+}
