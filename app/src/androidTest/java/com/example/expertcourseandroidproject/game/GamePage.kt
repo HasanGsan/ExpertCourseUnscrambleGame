@@ -52,7 +52,7 @@ class GamePage(word: String) {
         shuffleWord.assertTextVisible()
         inputUi.assertInitialState()
         skipUi.assertVisible()
-        checkUi.assertVisibleEnabled()
+        checkUi.assertVisibleDisabled()
         nextUi.assertNotVisible()
     }
 
@@ -64,8 +64,7 @@ class GamePage(word: String) {
         shuffleWord.assertTextVisible()
         inputUi.assertInsufficientState()
         skipUi.assertVisible()
-//        checkUi.assertVisibleDisabled()
-        checkUi.assertVisibleEnabled()
+        checkUi.assertVisibleDisabled()
         nextUi.assertNotVisible()
     }
 
@@ -77,6 +76,10 @@ class GamePage(word: String) {
         nextUi.assertNotVisible()
     }
 
+    fun clickNext() {
+        nextUi.click()
+    }
+
     fun assertCorrectState() {
         shuffleWord.assertTextVisible()
         inputUi.assertCorrectState()
@@ -85,24 +88,20 @@ class GamePage(word: String) {
         nextUi.assertVisible()
     }
 
-    fun assertIncorrectState() {
-        shuffleWord.assertTextVisible()
-        inputUi.assertIncorrectState()
-        skipUi.assertVisible()
-        checkUi.assertVisibleDisabled()
-        nextUi.assertNotVisible()
-    }
-
-    fun clickNext() {
-        nextUi.click()
-    }
-
     fun clickSkip() {
         skipUi.click()
     }
 
     fun clickCheck() {
         checkUi.click()
+    }
+
+    fun assertIncorrectState() {
+        shuffleWord.assertTextVisible()
+        inputUi.assertIncorrectState()
+        skipUi.assertVisible()
+        checkUi.assertVisibleDisabled()
+        nextUi.assertNotVisible()
     }
 
     fun removeInputLastLetter() {

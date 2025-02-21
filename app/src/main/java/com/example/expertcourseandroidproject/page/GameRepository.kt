@@ -11,7 +11,7 @@ interface GameRepository {
     class Base(
         private val shuffleStrategyBase: ShuffleStrategy = ShuffleStrategy.Reverse(),
         private val list: List<String> = listOf(
-            "Стрелять", "Бежать", "Прыгать", "Летать"
+            "Shooting", "Running", "Flying", "Jumping"
         )
     ) : GameRepository {
 

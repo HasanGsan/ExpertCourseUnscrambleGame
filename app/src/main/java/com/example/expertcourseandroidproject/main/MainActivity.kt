@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.nextButton.setOnClickListener{
             val uiState: GameUiState = viewModel.next()
+            binding.inputText.setText("")
             uiState.update(binding = binding)
         }
 

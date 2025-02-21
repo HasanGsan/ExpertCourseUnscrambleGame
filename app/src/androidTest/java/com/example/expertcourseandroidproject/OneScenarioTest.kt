@@ -1,5 +1,6 @@
 package com.example.expertcourseandroidproject
 
+import android.util.Log
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.expertcourseandroidproject.game.GamePage
@@ -21,40 +22,29 @@ class OneScenarioTest {
 
     @Before
     fun setup(){
-        gamePage = GamePage(word = "Стрелять".reversed())
+        gamePage = GamePage(word = "Shooting".reversed())
     }
 
     @Test
     fun caseNumber1() {
-//        gamePage.assertInitialState()
-//
-//        gamePage.addInput(text = "Стрелят")
-//        gamePage.assertInsufficientState()
-//
-//        gamePage.addInput(text = "ь")
-//        gamePage.assertSufficientState()
-//
-//        gamePage.clickCheck()
-//        gamePage.assertCorrectState()
-//
-//        gamePage.clickNext()
-//
-//        gamePage = GamePage(word = "Прыгать")
-//        gamePage.assertInitialState()
         gamePage.assertInitialState()
 
-        gamePage.addInput(text = "Стрелятб")
-        gamePage.assertSufficientState()
-
-        gamePage.addInput(text = "ь")
+        gamePage.addInput(text = "Shoot")
         gamePage.assertInsufficientState()
 
-        gamePage.addInput(text = "Стрелять")
+        gamePage.addInput(text = "in")
+        gamePage.assertInsufficientState()
+
+        gamePage.addInput(text = "g")
+        gamePage.assertSufficientState()
 
         gamePage.clickCheck()
-        gamePage.addInput(text = "")
 
-        gamePage = GamePage(word = "Бежать".reversed())
+        gamePage.assertCorrectState()
+        gamePage.clickNext()
+
+
+        gamePage = GamePage(word = "Running".reversed())
         gamePage.assertInitialState()
 
     }
@@ -64,11 +54,24 @@ class OneScenarioTest {
         gamePage.assertInitialState()
 
         gamePage.clickSkip()
-        gamePage = GamePage(word = "Бежать".reversed())
+
+        gamePage = GamePage(word = "Летать".reversed())
         gamePage.assertInitialState()
 
-        gamePage.addInput(text = "Бежать")
+        gamePage.addInput("Летат")
+        gamePage.clickCheck()
+        gamePage.assertIncorrectState()
         gamePage.assertInsufficientState()
+
+        gamePage.addInput("Летате")
+        gamePage.clickCheck()
+        gamePage.assertIncorrectState()
+        gamePage.assertSufficientState()
+
+        gamePage.addInput("Летату")
+
+        gamePage.clickCheck()
+        gamePage.addInput("")
 
         gamePage.clickSkip()
         gamePage = GamePage(word = "Прыгать".reversed())
@@ -123,10 +126,10 @@ class OneScenarioTest {
 
     }
 
-    @Test
-    fun caseNumber3(){
-
-    }
+//    @Test
+//    fun caseNumber3(){
+//
+//    }
 
 
 

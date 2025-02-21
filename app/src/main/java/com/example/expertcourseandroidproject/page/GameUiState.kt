@@ -28,7 +28,7 @@ interface GameUiState {
         shuffledWord,
         InputUiState.Initial,
         skipVisibility = View.VISIBLE,
-        CheckUiState.Enabled,
+        CheckUiState.Disabled,
         nextVisibility = View.GONE
     )
 
@@ -36,7 +36,7 @@ interface GameUiState {
         shuffledWord,
         InputUiState.Insufficient,
         skipVisibility = View.VISIBLE,
-        CheckUiState.Enabled,
+        CheckUiState.Disabled,
         nextVisibility = View.GONE
     )
 
@@ -51,9 +51,9 @@ interface GameUiState {
     data class Correct(private val shuffledWord: String) : Abstract(
         shuffledWord,
         InputUiState.Correct,
-        skipVisibility = View.VISIBLE,
-        CheckUiState.Enabled,
-        nextVisibility = View.INVISIBLE
+        skipVisibility = View.GONE,
+        CheckUiState.Invisible,
+        nextVisibility = View.VISIBLE
     )
 
     data class Incorrect(private val shuffledWord: String) : Abstract(
