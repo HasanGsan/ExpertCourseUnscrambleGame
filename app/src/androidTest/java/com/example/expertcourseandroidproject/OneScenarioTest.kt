@@ -55,74 +55,79 @@ class OneScenarioTest {
 
         gamePage.clickSkip()
 
-        gamePage = GamePage(word = "Летать".reversed())
+        gamePage = GamePage(word = "Running".reversed())
         gamePage.assertInitialState()
 
-        gamePage.addInput("Летат")
-        gamePage.clickCheck()
-        gamePage.assertIncorrectState()
+        gamePage.addInput("R")
         gamePage.assertInsufficientState()
 
-        gamePage.addInput("Летате")
-        gamePage.clickCheck()
-        gamePage.assertIncorrectState()
-        gamePage.assertSufficientState()
-
-        gamePage.addInput("Летату")
-
-        gamePage.clickCheck()
-        gamePage.addInput("")
-
-        gamePage.clickSkip()
-        gamePage = GamePage(word = "Прыгать".reversed())
-        gamePage.assertInitialState()
-
-        gamePage.addInput(text = "Анекдот")
+        gamePage.addInput("unnin")
         gamePage.assertInsufficientState()
 
-        gamePage.addInput(text = "а")
+        gamePage.addInput("e")
         gamePage.assertSufficientState()
-
-        gamePage.clickSkip()
-        gamePage = GamePage(word = "Летать".reversed())
-        gamePage.assertInitialState()
-
-        gamePage.addInput(text = "Летать")
-        gamePage.assertInsufficientState()
-
-        gamePage.addInput(text = "е")
-        gamePage.assertSufficientState()
-
-        gamePage.clickCheck()
-        gamePage.assertIncorrectState()
-
-        gamePage.clickSkip()
-        gamePage = GamePage(word = "Прыгать".reversed())
-        gamePage.assertInitialState()
-
-        gamePage.addInput(text = "прыг")
-        gamePage.assertInsufficientState()
-
-        gamePage.addInput(text = "е")
-        gamePage.assertSufficientState()
-
         gamePage.clickCheck()
         gamePage.assertIncorrectState()
 
         gamePage.removeInputLastLetter()
+        gamePage.addInput("g")
+
+        gamePage.clickCheck()
+        gamePage.assertCorrectState()
+        gamePage.clickNext()
+
+        gamePage = GamePage(word = "Flying".reversed())
+        gamePage.assertInitialState()
+
+        gamePage.clickSkip()
+        gamePage = GamePage(word = "Jumping".reversed())
+        gamePage.assertInitialState()
+
+        gamePage.addInput("j")
         gamePage.assertInsufficientState()
 
-        gamePage.addInput(text = "л")
+        gamePage.addInput("u")
+        gamePage.assertInsufficientState()
+
+        gamePage.addInput("m")
+        gamePage.assertInsufficientState()
+
+        gamePage.addInput("p")
+        gamePage.assertInsufficientState()
+
+        gamePage.addInput("i")
+        gamePage.assertInsufficientState()
+
+        gamePage.addInput("n")
+        gamePage.assertInsufficientState()
+
+        gamePage.addInput("e")
         gamePage.assertSufficientState()
 
         gamePage.removeInputLastLetter()
-        gamePage.assertInsufficientState()
 
-        gamePage.addInput(text = "е")
+        gamePage.addInput("e")
         gamePage.assertSufficientState()
-
         gamePage.clickCheck()
         gamePage.assertIncorrectState()
+
+        gamePage.removeInputLastLetter()
+
+        gamePage.addInput("d")
+        gamePage.assertSufficientState()
+        gamePage.clickCheck()
+        gamePage.assertIncorrectState()
+
+        gamePage.removeInputLastLetter()
+
+        gamePage.addInput("g")
+        gamePage.clickCheck()
+        gamePage.assertCorrectState()
+        gamePage.clickNext()
+
+        gamePage = GamePage(word = "Shooting".reversed())
+        gamePage.assertInitialState()
+
 
     }
 

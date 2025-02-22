@@ -39,7 +39,6 @@ interface ShuffleStrategy {
 
     class Base : ShuffleStrategy {
         override fun shuffle(source: String): String {
-//            return source.chars().toList().map { it.toString() }.shuffled().toString()
             return source.toList().joinToString("")
 
         }
