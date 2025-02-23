@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.inputText.addTextChangedListener {
-            val uiState: GameUiState = viewModel.pullOut(text = it.toString())
+            val uiState: GameUiState = viewModel.handleUserInput(text = it.toString())
 
             uiState.update(binding = binding)
 
