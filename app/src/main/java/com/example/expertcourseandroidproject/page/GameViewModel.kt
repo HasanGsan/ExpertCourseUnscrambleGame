@@ -5,41 +5,44 @@ import android.util.Log
 class GameViewModel(private val repository: GameRepository) {
 
     fun init(): GameUiState {
-        return GameUiState.Initial(repository.shuffledWord())
+        val shuffleWord = repository.shuffledWord()
+        return GameUiState.Initial(shuffleWord)
     }
 
-    fun pullOut(text: String): GameUiState {
+    fun handleUserInput(text: String): GameUiState {
+        val shuffleWord = repository.shuffledWord()
+        val isSufficient = text.length == shuffleWord.length
 
-        return if(text.length == repository.shuffledWord().length){
-           GameUiState.Sufficient(repository.shuffledWord())
+        return if (isSufficient){
+            GameUiState.Sufficient(shuffleWord)
         }
         else{
-            GameUiState.Insufficient(repository.shuffledWord())
+            GameUiState.Insufficient(shuffleWord)
         }
-
     }
 
     fun check(text: String): GameUiState {
-        val isCorrect = text.toString().trim().equals(repository.originalWord().trim(), ignoreCase = true)
-//        Log.d("CheckUiState", isCorrect.toString())
-//        Log.d("CheckUiState", "isCorrect = $isCorrect, text = '${text.toString()}', original = '${repository.originalWord()}'")
+        val shuffleWord = repository.shuffledWord()
+        val originalWord = repository.originalWord()
+        val isCorrect = originalWord.equals(text, ignoreCase = true)
+
         return if(isCorrect){
-            GameUiState.Correct(repository.shuffledWord())
+            GameUiState.Correct(shuffleWord)
         }
         else{
-            GameUiState.Incorrect(repository.shuffledWord())
+            GameUiState.Incorrect(shuffleWord)
         }
     }
 
     fun next(): GameUiState {
         repository.next()
-        return GameUiState.Initial(repository.shuffledWord())
+        return init()
 
     }
 
     fun skip(): GameUiState {
         repository.next()
-        return GameUiState.Initial(repository.shuffledWord())
+        return init()
     }
 
 
