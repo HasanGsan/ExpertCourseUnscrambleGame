@@ -2,8 +2,9 @@ package com.example.expertcourseandroidproject.page
 
 import android.view.View
 import com.example.expertcourseandroidproject.databinding.ActivityMainBinding
+import java.io.Serializable
 
-interface GameUiState {
+interface GameUiState : Serializable {
 
     fun update(binding: ActivityMainBinding)
 

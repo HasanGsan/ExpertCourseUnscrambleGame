@@ -25,108 +25,114 @@ class OneScenarioTest {
         gamePage = GamePage(word = "Shooting".reversed())
     }
 
+    private fun ActivityScenarioRule<*>.doWithRecreate(block: ()->Unit) {
+        block.invoke()
+        scenario.recreate()
+        block.invoke()
+    }
+
     @Test
     fun caseNumber1() {
-        gamePage.assertInitialState()
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
 
         gamePage.addInput(text = "Shoot")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput(text = "in")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput(text = "g")
-        gamePage.assertSufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
 
         gamePage.clickCheck()
-
-        gamePage.assertCorrectState()
+        scenarioRule.doWithRecreate(gamePage::assertCorrectState)
         gamePage.clickNext()
 
 
         gamePage = GamePage(word = "Running".reversed())
-        gamePage.assertInitialState()
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
 
     }
 
     @Test
     fun caseNumber2(){
-        gamePage.assertInitialState()
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
 
         gamePage.clickSkip()
 
         gamePage = GamePage(word = "Running".reversed())
-        gamePage.assertInitialState()
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
 
         gamePage.addInput("R")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput("unnin")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput("e")
-        gamePage.assertSufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
         gamePage.clickCheck()
-        gamePage.assertIncorrectState()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
 
         gamePage.removeInputLastLetter()
+
         gamePage.addInput("g")
 
         gamePage.clickCheck()
-        gamePage.assertCorrectState()
+        scenarioRule.doWithRecreate(gamePage::assertCorrectState)
         gamePage.clickNext()
 
         gamePage = GamePage(word = "Flying".reversed())
-        gamePage.assertInitialState()
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
 
         gamePage.clickSkip()
         gamePage = GamePage(word = "Jumping".reversed())
-        gamePage.assertInitialState()
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
 
         gamePage.addInput("j")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput("u")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput("m")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput("p")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput("i")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput("n")
-        gamePage.assertInsufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertInsufficientState)
 
         gamePage.addInput("e")
-        gamePage.assertSufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
 
         gamePage.removeInputLastLetter()
 
         gamePage.addInput("e")
-        gamePage.assertSufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
         gamePage.clickCheck()
-        gamePage.assertIncorrectState()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
 
         gamePage.removeInputLastLetter()
 
         gamePage.addInput("d")
-        gamePage.assertSufficientState()
+        scenarioRule.doWithRecreate(gamePage::assertSufficientState)
         gamePage.clickCheck()
-        gamePage.assertIncorrectState()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
 
         gamePage.removeInputLastLetter()
 
         gamePage.addInput("g")
         gamePage.clickCheck()
-        gamePage.assertCorrectState()
+        scenarioRule.doWithRecreate(gamePage::assertCorrectState)
         gamePage.clickNext()
 
         gamePage = GamePage(word = "Shooting".reversed())
-        gamePage.assertInitialState()
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
 
 
     }
