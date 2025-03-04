@@ -1,15 +1,17 @@
 package com.example.expertcourseandroidproject.page
 
-import kotlin.streams.toList
-
 interface GameRepository {
 
     fun shuffledWord() : String
     fun originalWord() : String
     fun next()
+    fun saveUserInput(value: String)
+    fun userInput() : String
 
     class Base(
-        private val shuffleStrategyBase: ShuffleStrategy = ShuffleStrategy.Reverse(),
+        private val index: IntCache,
+        private val userInput: StringCache,
+        private val shuffleStrategyBase: ShuffleStrategy = ShuffleStrategy.Base(),
         private val list: List<String> = listOf(
             "Shooting", "Running", "Flying", "Jumping"
         )
@@ -17,17 +19,25 @@ interface GameRepository {
 
         private val shuffledList = list.map { shuffleStrategyBase.shuffle(it) }
 
-        private var index = 0
+        override fun shuffledWord() : String = shuffledList[index.read()]
 
-        override fun shuffledWord() : String = shuffledList[index]
-
-        override fun originalWord() : String = list[index]
+        override fun originalWord() : String = list[index.read()]
 
         override fun next(){
-            index++
-            if(index == list.size){
-                index = 0
+            index.save(index.read() + 1)
+            if(index.read() == list.size){
+                index.save(0)
             }
+            userInput.save("")
+        }
+
+
+        override fun saveUserInput(value: String) {
+            userInput.save(value)
+        }
+
+        override fun userInput(): String {
+            return userInput.read()
         }
 
     }
