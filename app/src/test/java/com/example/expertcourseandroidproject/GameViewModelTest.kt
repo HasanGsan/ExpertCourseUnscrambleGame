@@ -1,8 +1,8 @@
 package com.example.expertcourseandroidproject
 
-import com.example.expertcourseandroidproject.page.GameRepository
-import com.example.expertcourseandroidproject.page.GameUiState
-import com.example.expertcourseandroidproject.page.GameViewModel
+import com.example.expertcourseandroidproject.views.GameRepository
+import com.example.expertcourseandroidproject.views.GameUiState
+import com.example.expertcourseandroidproject.views.GameViewModel
 import junit.framework.TestCase.assertEquals
 
 import org.junit.Before
@@ -27,15 +27,15 @@ class GameViewModelTest {
         assertEquals(expected, actual)
 
         actual = viewModel.handleUserInput(text = "1")
-        expected = GameUiState.Insufficient(shuffledWord = "f1")
+        expected = GameUiState.Insufficient
         assertEquals(expected, actual)
 
         actual = viewModel.handleUserInput(text = "1f")
-        expected = GameUiState.Sufficient(shuffledWord = "f1")
+        expected = GameUiState.Sufficient
         assertEquals(expected, actual)
 
         actual = viewModel.check(text = "1f")
-        expected = GameUiState.Correct(shuffledWord = "f1")
+        expected = GameUiState.Correct
         assertEquals(expected, actual)
 
         actual = viewModel.next()
@@ -60,7 +60,7 @@ class GameViewModelTest {
 
 
         actual = viewModel.handleUserInput(text = "1")
-        expected = GameUiState.Insufficient(shuffledWord = "f2")
+        expected = GameUiState.Insufficient
         assertEquals(expected, actual)
         actual = viewModel.skip()
         expected = GameUiState.Initial(shuffledWord = "f3")
@@ -69,9 +69,9 @@ class GameViewModelTest {
 
 
         actual = viewModel.handleUserInput(text = "f")
-        expected = GameUiState.Insufficient(shuffledWord = "f3")
+        expected = GameUiState.Insufficient
         actual = viewModel.handleUserInput(text = "f1")
-        expected = GameUiState.Sufficient(shuffledWord = "f3")
+        expected = GameUiState.Sufficient
         assertEquals(expected, actual)
         actual = viewModel.skip()
         expected = GameUiState.Initial(shuffledWord = "f4")
@@ -79,13 +79,13 @@ class GameViewModelTest {
 
 
         actual = viewModel.handleUserInput(text = "f")
-        expected = GameUiState.Insufficient(shuffledWord = "f4")
+        expected = GameUiState.Insufficient
         assertEquals(expected, actual)
         actual = viewModel.handleUserInput(text = "f1")
-        expected = GameUiState.Sufficient(shuffledWord = "f4")
+        expected = GameUiState.Sufficient
         assertEquals(expected, actual)
         actual = viewModel.check(text = "f1")
-        expected = GameUiState.Incorrect(shuffledWord = "f4")
+        expected = GameUiState.Incorrect
         assertEquals(expected, actual)
         actual = viewModel.skip()
         expected = GameUiState.Initial(shuffledWord = "f5")
@@ -94,21 +94,21 @@ class GameViewModelTest {
 
 
         actual = viewModel.handleUserInput(text = "f")
-        expected = GameUiState.Insufficient(shuffledWord = "f5")
+        expected = GameUiState.Insufficient
         assertEquals(expected, actual)
         actual = viewModel.handleUserInput(text = "f1")
-        expected = GameUiState.Sufficient(shuffledWord = "f5")
+        expected = GameUiState.Sufficient
         assertEquals(expected, actual)
         actual = viewModel.check(text = "f1")
-        expected = GameUiState.Incorrect(shuffledWord = "f5")
+        expected = GameUiState.Incorrect
         actual = viewModel.handleUserInput(text = "f")
-        expected = GameUiState.Insufficient(shuffledWord = "f5")
+        expected = GameUiState.Insufficient
         assertEquals(expected, actual)
         actual = viewModel.handleUserInput(text = "f1")
-        expected = GameUiState.Sufficient(shuffledWord = "f5")
+        expected = GameUiState.Sufficient
         assertEquals(expected, actual)
         actual = viewModel.handleUserInput(text = "f12")
-        expected = GameUiState.Insufficient(shuffledWord = "f5")
+        expected = GameUiState.Insufficient
         assertEquals(expected, actual)
 
     }

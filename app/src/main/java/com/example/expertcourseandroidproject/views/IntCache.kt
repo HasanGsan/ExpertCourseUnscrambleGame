@@ -1,4 +1,4 @@
-package com.example.expertcourseandroidproject.page
+package com.example.expertcourseandroidproject.views
 
 import android.content.SharedPreferences
 

@@ -25,26 +25,20 @@ import com.google.android.material.textfield.TextInputLayout
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
 
-class InputUi(
-    containerIdMatcher: Matcher<View>,
-    containerClassTypeMatcher: Matcher<View>
-) {
+class InputUi {
 
     private val inputLayoutId: Int = R.id.inputLayout
-    private val inputEditText: Int = R.id.inputText
     private val layoutInteraction: ViewInteraction = onView(
         allOf(
             withId(inputLayoutId),
             isAssignableFrom(TextInputLayout::class.java),
-            containerClassTypeMatcher,
-            containerIdMatcher,
         )
     )
 
     private val inputInteraction : ViewInteraction = onView(
         allOf(
-            withId(inputEditText),
-            isAssignableFrom(TextInputEditText::class.java)
+            isAssignableFrom(TextInputEditText::class.java),
+            withId(R.id.inputEditText),
         )
     )
 

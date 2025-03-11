@@ -1,22 +1,23 @@
-package com.example.expertcourseandroidproject.page
+package com.example.expertcourseandroidproject.views
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
+import com.example.expertcourseandroidproject.views.check.UpdateCheckButton
 import java.io.Serializable
 
 interface CheckUiState : Serializable {
 
-    fun update(checkButton: AppCompatButton)
+    fun update(updateCheckButton: UpdateCheckButton)
 
     abstract class Abstract(
         private val visible: Int,
         private val enabled: Boolean,
     ) : CheckUiState {
 
-        override fun update(checkButton: AppCompatButton) = with(checkButton){
-            visibility = visible
-            isEnabled = enabled
+        override fun update(updateCheckButton: UpdateCheckButton) {
+            updateCheckButton.update(visible, enabled)
         }
+
     }
 
     object Disabled : Abstract(View.VISIBLE, false)

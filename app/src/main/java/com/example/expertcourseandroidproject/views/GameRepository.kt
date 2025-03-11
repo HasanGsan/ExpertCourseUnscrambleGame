@@ -1,4 +1,4 @@
-package com.example.expertcourseandroidproject.page
+package com.example.expertcourseandroidproject.views
 
 interface GameRepository {
 
@@ -19,7 +19,9 @@ interface GameRepository {
 
         private val shuffledList = list.map { shuffleStrategyBase.shuffle(it) }
 
-        override fun shuffledWord() : String = shuffledList[index.read()]
+//        override fun shuffledWord() : String = shuffledList[index.read()]
+override fun shuffledWord(): String = shuffleStrategyBase.shuffle(list[index.read()])
+
 
         override fun originalWord() : String = list[index.read()]
 

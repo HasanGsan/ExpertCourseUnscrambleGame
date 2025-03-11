@@ -22,10 +22,7 @@ class GamePage(word: String) {
 
     )
 
-    private val inputUi = InputUi(
-        containerIdMatcher = containerIdMatcher,
-        containerClassTypeMatcher = containerClassTypeMatcher
-    )
+    private val inputUi = InputUi()
 
     private val skipUi = ButtonUi(
         id = R.id.skipButton,
