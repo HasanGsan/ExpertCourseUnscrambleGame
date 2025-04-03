@@ -137,10 +137,90 @@ class OneScenarioTest {
 
     }
 
-//    @Test
-//    fun caseNumber3(){
-//
-//    }
+    @Test
+    fun caseNumber3(){
+
+
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
+        gamePage = GamePage(word = "Shooting".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
+        gamePage.addInput(text = "qwertyio")
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
+
+        gamePage.clickSkip()
+
+        gamePage = GamePage(word = "Running".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+        gamePage.addInput(text = "asdfasd")
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
+
+
+        gamePage.clickNext()
+        gamePage.assertNotVisible()
+
+        val gameOverPage = GameOverPage(incorrects = 2, corrects = 0,)
+        gameOverPage.assertInitialState()
+        scenarioRule.scenario.recreate()
+        gameOverPage.assertInitialState()
+
+        gameOverPage.clickNewGame()
+        gameOverPage.assertNotVisible()
+
+        gamePage = GamePage(word = "Shooting".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
+        gamePage.addInput(text = "Shooting")
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertCorrectState)
+
+        gamePage.clickNext()
+
+        gamePage = GamePage(word = "Running".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+        gamePage.addInput(text = "asdfasd")
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertIncorrectState)
+
+        gamePage.clickSkip()
+        gameOverPage.assertNotVisible()
+
+        gameOverPage = GameOverPage(incorrects = 1, corrects = 1,)
+        gameOverPage.assertInitialState()
+        scenarioRule.scenario.recreate()
+        gameOverPage.assertInitialState()
+
+
+        gameOverPage.clickNewGame()
+        gameOverPage.assertNotVisible()
+
+        gamePage = GamePage(word = "Shooting".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+
+        gamePage.addInput(text = "Shooting")
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertCorrectState)
+
+        gamePage.clickNext()
+
+        gamePage = GamePage(word = "Running".reversed())
+        scenarioRule.doWithRecreate(gamePage::assertInitialState)
+        gamePage.addInput(text = "Running")
+        gamePage.clickCheck()
+        scenarioRule.doWithRecreate(gamePage::assertCorrectState)
+
+        gamePage.clickNext()
+        val gameOverPage = GameOverPage(incorrects = 0, corrects = 2,)
+        gameOverPage.assertInitialState()
+        scenarioRule.scenario.recreate()
+        gameOverPage.assertInitialState()
+
+    }
+
+
 
 
 

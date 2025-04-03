@@ -26,6 +26,7 @@ interface InputUiState : Serializable{
         }
 
     }
+
     object Sufficient : Abstract(false, true)
     object Insufficient : Abstract(false, true)
     object Correct : Abstract(false, false)

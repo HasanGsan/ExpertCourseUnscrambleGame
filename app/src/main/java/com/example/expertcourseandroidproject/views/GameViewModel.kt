@@ -1,8 +1,9 @@
 package com.example.expertcourseandroidproject.views
 
-import android.util.Log
 
-class GameViewModel(private val repository: GameRepository) {
+class GameViewModel(
+    private val repository: GameRepository,
+) {
 
     fun next(): GameUiState {
         repository.next()
@@ -43,11 +44,9 @@ class GameViewModel(private val repository: GameRepository) {
 
 
     fun init(): GameUiState {
-            val shuffleWord = repository.shuffledWord()
-            return GameUiState.Initial(shuffleWord, repository.userInput())
+        val shuffleWord = repository.shuffledWord()
+        return GameUiState.Initial(shuffleWord, repository.userInput())
     }
-
-
 
 
 }

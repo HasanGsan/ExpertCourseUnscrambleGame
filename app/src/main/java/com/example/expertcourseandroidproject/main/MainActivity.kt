@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             update.invoke()
         }
 
-//        uiState = if(savedInstanceState == null) Эта запись у меня не работает почему-то
+//        uiState = if(savedInstanceState == null)
 //            viewModel.init()
 //        else
 //            GameUiState.Empty
