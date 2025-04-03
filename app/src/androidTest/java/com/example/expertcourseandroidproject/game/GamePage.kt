@@ -105,4 +105,8 @@ class GamePage(word: String) {
         inputUi.removeInputLastLetter()
     }
 
+    fun assertNotVisible() {
+        shuffleWord.assertDoesNotExist()
+    }
+
 }

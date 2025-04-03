@@ -1,4 +1,4 @@
-package com.example.expertcourseandroidproject.game
+package com.example.expertcourseandroidproject
 
 import android.view.View
 import android.widget.TextView
@@ -7,37 +7,38 @@ import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import com.example.expertcourseandroidproject.R
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
 
-class ShuffleWorldUi(
-    text: String,
+class StatsUi(
+    incorrects: Int,
+    corrects: Int,
     containerIdMatcher: Matcher<View>,
-    containerClassTypeMatcher: Matcher<View>
-) {
+    containerClassTypeMatcher: Matcher<View>,
+    ) {
 
-    private val interaction: ViewInteraction = onView(
-        allOf(
-            withId(R.id.shuffledWordTextView),
-            withText(text),
-            containerIdMatcher,
-            containerClassTypeMatcher,
-            isAssignableFrom(TextView::class.java)
+
+    private val interaction: ViewInteraction =
+        onView(
+            allOf(
+                withId(R.id.statsTextView),
+                isAssignableFrom(TextView::class.java),
+                withText("Corrects: $corrects\nIncorrects: $incorrects"),
+                containerIdMatcher,
+                containerClassTypeMatcher
+            )
 
         )
-    )
 
-    fun assertTextVisible() {
-        interaction.check(matches(isCompletelyDisplayed()))
+    fun assertVisible() {
+        interaction.check(matches(isDisplayed()))
     }
 
     fun assertDoesNotExist() {
         interaction.check(doesNotExist())
     }
-
 
 }
