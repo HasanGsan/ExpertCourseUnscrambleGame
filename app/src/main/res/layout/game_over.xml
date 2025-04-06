@@ -11,11 +11,11 @@
         android:id="@+id/statsTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintBottom_toBottomOf="parent">
     </com.example.expertcourseandroidproject.views.stats.StatsTextView>
 
     <androidx.appcompat.widget.AppCompatButton
