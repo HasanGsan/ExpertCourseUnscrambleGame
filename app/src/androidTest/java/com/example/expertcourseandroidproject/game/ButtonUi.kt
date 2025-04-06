@@ -3,7 +3,6 @@ package com.example.expertcourseandroidproject.game
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatButton
-import androidx.compose.material3.ButtonColors
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -11,6 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.example.expertcourseandroidproject.ButtonColorMatcher
 import org.hamcrest.CoreMatchers.not
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf

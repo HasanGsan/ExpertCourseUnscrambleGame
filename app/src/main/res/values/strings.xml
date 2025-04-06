@@ -5,4 +5,6 @@
     <string name="next_str">Дальше</string>
     <string name="incorrect_message">Incorrect!</string>
     <string name="empty">""</string>
+    <string name="new_game">start a new game</string>
+    <string name="stats">Corrects: %d\nIncorrects: %d</string>
 </resources>

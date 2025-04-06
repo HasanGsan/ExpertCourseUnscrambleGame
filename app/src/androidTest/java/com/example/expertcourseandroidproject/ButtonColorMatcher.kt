@@ -1,4 +1,4 @@
-package com.example.expertcourseandroidproject.game
+package com.example.expertcourseandroidproject
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
