@@ -1,8 +1,8 @@
 package com.example.expertcourseandroidproject
 
-import com.example.expertcourseandroidproject.views.GameRepository
-import com.example.expertcourseandroidproject.views.GameUiState
-import com.example.expertcourseandroidproject.views.GameViewModel
+import com.example.expertcourseandroidproject.game.GameRepository
+import com.example.expertcourseandroidproject.game.GameUiState
+import com.example.expertcourseandroidproject.game.GameViewModel
 import junit.framework.TestCase.assertEquals
 
 import org.junit.Before

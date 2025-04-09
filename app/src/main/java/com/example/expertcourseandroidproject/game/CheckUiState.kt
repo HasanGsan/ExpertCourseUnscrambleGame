@@ -1,7 +1,6 @@
-package com.example.expertcourseandroidproject.views
+package com.example.expertcourseandroidproject.game
 
 import android.view.View
-import androidx.appcompat.widget.AppCompatButton
 import com.example.expertcourseandroidproject.views.check.UpdateCheckButton
 import java.io.Serializable
 

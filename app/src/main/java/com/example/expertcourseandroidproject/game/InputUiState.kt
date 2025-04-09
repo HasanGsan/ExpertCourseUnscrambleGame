@@ -1,4 +1,4 @@
-package com.example.expertcourseandroidproject.views
+package com.example.expertcourseandroidproject.game
 
 import com.example.expertcourseandroidproject.views.input.UpdateInput
 import java.io.Serializable

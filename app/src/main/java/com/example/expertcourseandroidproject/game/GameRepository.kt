@@ -1,4 +1,4 @@
-package com.example.expertcourseandroidproject.views
+package com.example.expertcourseandroidproject.game
 
 interface GameRepository {
 

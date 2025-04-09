@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.expertcourseandroidproject.R
 import com.example.expertcourseandroidproject.databinding.InputBinding
-import com.example.expertcourseandroidproject.views.InputUiState
+import com.example.expertcourseandroidproject.game.InputUiState
 
 class InputView : ConstraintLayout, UpdateInput {
 

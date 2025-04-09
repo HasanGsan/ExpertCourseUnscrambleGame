@@ -1,6 +1,7 @@
 package com.example.expertcourseandroidproject.views
 
 import android.view.View
+import com.example.expertcourseandroidproject.game.CheckUiState
 import com.example.expertcourseandroidproject.views.check.UpdateCheckButton
 import org.junit.Assert.assertEquals
 import org.junit.Test

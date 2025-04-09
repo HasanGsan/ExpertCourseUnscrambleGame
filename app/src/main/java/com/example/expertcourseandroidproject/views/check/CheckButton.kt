@@ -4,8 +4,7 @@ import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatButton
-import com.example.expertcourseandroidproject.views.CheckUiState
-import java.io.Serializable
+import com.example.expertcourseandroidproject.game.CheckUiState
 
 class CheckButton : AppCompatButton, UpdateCheckButton {
 
