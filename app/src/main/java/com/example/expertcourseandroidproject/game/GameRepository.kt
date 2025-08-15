@@ -13,7 +13,7 @@ interface GameRepository {
         private val userInput: StringCache,
         private val shuffleStrategyBase: ShuffleStrategy = ShuffleStrategy.Base(),
         private val list: List<String> = listOf(
-            "Shooting", "Running", "Flying", "Jumping"
+            "Shooting", "Running", "Flying", "Jumping", "Swimming"
         )
     ) : GameRepository {
 
